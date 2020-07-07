@@ -37,20 +37,21 @@ what_can_i_do="我目前只有2個按鈕\n然後我可以學你說話\n你也可
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text=="@自我介紹":
-        message = TextSendMessage(text="哈摟我叫yichengBOT\n建於2020/7/7\n沒啥功能")
-        line_bot_api.reply_message(event.reply_token, message)
-    elif event.message.text=="@你會幹嘛?":
-        message = TextSendMessage(text=what_can_i_do)
-        line_bot_api.reply_message(event.reply_token, message)
-    elif event.message.text=="@風景圖":
-        message = ImageSendMessage(
+    input=event.message.text
+
+    if input=="@自我介紹":
+        reply = "哈摟我叫yichengBOT\n建於2020/7/7\n沒啥功能"
+    elif input=="@你會幹嘛?":
+        reply = what_can_i_do
+    elif input=="@風景圖":
+        reply = ImageSendMessage(
             original_content_url='https://images4.alphacoders.com/774/77454.jpg',
-            preview_image_url='https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png')
-        line_bot_api.reply_message(event.reply_token, message)
+            preview_image_url='https://images4.alphacoders.com/774/77454.jpg')
     else:
-        message = TextSendMessage(text=event.message.text)
-        line_bot_api.reply_message(event.reply_token, message)
+        reply = input
+
+    message = TextSendMessage(text=reply)
+    line_bot_api.reply_message(event.reply_token, message)
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
