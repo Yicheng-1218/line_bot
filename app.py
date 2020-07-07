@@ -34,7 +34,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
-    if message=="自我介紹":
+    if message=="@自我介紹":
         Self_introduction="哈摟我是yichengBOT 因為剛建起來，所以我超笨"
         line_bot_api.reply_message(event.reply_token, Self_introduction)
 
