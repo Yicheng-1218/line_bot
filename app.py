@@ -43,14 +43,13 @@ def handle_message(event):
     elif event.message.text=="@你會幹嘛?":
         message = TextSendMessage(text=what_can_i_do)
         line_bot_api.reply_message(event.reply_token, message)
-    else:
-        message = TextSendMessage(text=event.message.text)
-        line_bot_api.reply_message(event.reply_token, message)
-def beach_picture(event):
-    if event.message.text=="@風景圖":
+    elif event.message.text=="@風景圖":
         message = ImageSendMessage(
             original_content_url='https://images4.alphacoders.com/774/77454.jpg',
             preview_image_url='https://images4.alphacoders.com/774/77454.jpg')
+        line_bot_api.reply_message(event.reply_token, message)
+    else:
+        message = TextSendMessage(text=event.message.text)
         line_bot_api.reply_message(event.reply_token, message)
 import os
 if __name__ == "__main__":
