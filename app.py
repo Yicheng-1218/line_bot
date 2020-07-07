@@ -40,18 +40,18 @@ def handle_message(event):
     input=event.message.text
 
     if input=="@自我介紹":
-        reply = "哈摟我叫yichengBOT\n建於2020/7/7\n沒啥功能"
+        reply_text = "哈摟我叫yichengBOT\n建於2020/7/7\n沒啥功能"
     elif input=="@你會幹嘛?":
-        reply = what_can_i_do
+        reply_text = what_can_i_do
     elif input=="@風景圖":
-        reply = ImageSendMessage(
+        reply_picture = ImageSendMessage(
             original_content_url='https://images4.alphacoders.com/774/77454.jpg',
             preview_image_url='https://images4.alphacoders.com/774/77454.jpg')
-        line_bot_api.reply_message(event.reply_token, reply)
+        line_bot_api.reply_message(event.reply_token, reply_picture)
     else:
-        reply = input
+        reply_text = input
 
-    message = TextSendMessage(text=reply)
+    message = TextSendMessage(text=reply_text)
     line_bot_api.reply_message(event.reply_token, message)
 import os
 if __name__ == "__main__":
