@@ -47,6 +47,7 @@ def handle_message(event):
         reply = ImageSendMessage(
             original_content_url='https://images4.alphacoders.com/774/77454.jpg',
             preview_image_url='https://images4.alphacoders.com/774/77454.jpg')
+        line_bot_api.reply_message(event.reply_token, reply)
     else:
         reply = input
 
