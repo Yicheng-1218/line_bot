@@ -48,7 +48,8 @@ def handle_message(event):
     elif input=="@你會幹嘛?":
         reply_text = what_can_i_do
     elif input=="@meme":
-        reply_picture = ImageSendMessage(original_content_url=MemeSend(),preview_image_url=MemeSend())
+        meme_jpg=MemeSend()
+        reply_picture = ImageSendMessage(original_content_url=meme_jpg,preview_image_url=meme_jpg)
         line_bot_api.reply_message(event.reply_token, reply_picture)
     elif input=="@新北市天氣":
         reply_text=WeatherGet('新北市')
