@@ -63,7 +63,7 @@ def handle_message(event):
         luis_report=luis.get_report(input)
         if luis.user_mind=="weather":
             reply_text=WeatherGet(luis_report)
-        elif luis.user_mind=="criticize":
+        if luis.user_mind=="criticize":
             reply_text=random.choice(criticize)
 
     luis.user_mind=''
