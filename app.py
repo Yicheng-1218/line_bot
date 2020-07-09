@@ -8,12 +8,12 @@ from linebot.models import *
 
 from weather import WeatherGet
 
-from flask import current_app 
+from flask import current_app as app1
 
 import requests
 
 
-app = current_app.Flask(__name__)
+app = Flask(__name__)
 # Channel Access Token
 line_bot_api = LineBotApi('SJSoAEGKK4nj58UHAluyb6y18wAdeOUn/F163A1BEHGjI7BLUaFz/2rnRhskf2k9w/7XzOpwsCnZTcztjxjOEv/c2J0GuUd0RPcyQIfNLMzPt6WWxJ5XnMoYp4uBCsNJ7iG95AIAursQ/5xbpyq7aQdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
@@ -26,7 +26,7 @@ def callback():
     signature = request.headers['X-Line-Signature']
     # get request body as text
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+    app1.logger.info("Request body: " + body)
     # handle webhook body
     try:
         handler.handle(body, signature)
