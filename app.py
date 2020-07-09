@@ -8,7 +8,7 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-import requests
+import weather
 
 app = Flask(__name__)
 
@@ -50,6 +50,8 @@ def handle_message(event):
             original_content_url='https://images4.alphacoders.com/774/77454.jpg',
             preview_image_url='https://images4.alphacoders.com/774/77454.jpg')
         line_bot_api.reply_message(event.reply_token, reply_picture)
+    elif input=="@新北市天氣":
+        reply_text=weather.WeatherGet('新北市')
     else:
         reply_text = input
 
