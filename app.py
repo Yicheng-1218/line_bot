@@ -65,8 +65,8 @@ def handle_message(event):
             reply_text=WeatherGet(luis_report)
         elif luis.user_mind=="criticize":
             reply_text=random.choice(criticize)
-            
 
+    luis.user_mind=''
     message = TextSendMessage(text=reply_text)
     line_bot_api.reply_message(event.reply_token, message)
 import os
