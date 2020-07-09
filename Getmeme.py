@@ -1,17 +1,18 @@
 from bs4 import BeautifulSoup
 import requests
-
+import random
 src=[]
 index=0
 def memesPage():
+    global index
     if not src:
-        index=index+1
+        index+=1
         Meme_New_List(index)
-    if index==36:
+    if index==93:
         index=0
 
 def Meme_New_List(page):
-    meme_html=requests.get('https://memes.tw/wtf?sort=top-month&contest=11&page=%s'%(page))
+    meme_html=requests.get('https://memes.tw/wtf?sort=top-year&contest=11&page=%s'%(page))
     soup = BeautifulSoup(meme_html.text, 'html.parser')
     img_links = soup.find_all('img','img-fluid lazy')
     for imgs in img_links:
