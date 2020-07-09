@@ -35,7 +35,7 @@ def get_report(user_input):
             if en['type']=='地點':
                 city=en["entity"]
                 return city
-                break
-    if ret['topScoringIntent']['intent']=='詢問天氣':
+
+    if ret['topScoringIntent']['intent']=='被罵':
         user_mind='criticize'
         
