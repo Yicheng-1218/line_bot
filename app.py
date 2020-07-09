@@ -12,7 +12,9 @@ from Getmeme import MemeSend
 
 from flask import current_app as app1
 
+import twd
 
+import luis
 app = Flask(__name__)
 # Channel Access Token
 line_bot_api = LineBotApi('SJSoAEGKK4nj58UHAluyb6y18wAdeOUn/F163A1BEHGjI7BLUaFz/2rnRhskf2k9w/7XzOpwsCnZTcztjxjOEv/c2J0GuUd0RPcyQIfNLMzPt6WWxJ5XnMoYp4uBCsNJ7iG95AIAursQ/5xbpyq7aQdB04t89/1O/w1cDnyilFU=')
@@ -34,7 +36,7 @@ def callback():
         abort(400)
     return 'OK'
 
-what_can_i_do="我目前只有3個按鈕\n而且我可以學你說話\n你也可以試試問我問題\n找梗圖輸入@meme"
+what_can_i_do="我目前只有3個按鈕\n你可以問我天氣或是匯率\n找梗圖輸入@meme"
 
 
 
@@ -51,8 +53,10 @@ def handle_message(event):
         meme_jpg=MemeSend()
         reply_picture = ImageSendMessage(original_content_url=meme_jpg,preview_image_url=meme_jpg)
         line_bot_api.reply_message(event.reply_token, reply_picture)
-    elif input=="@新北市天氣":
-        reply_text=WeatherGet('新北市')
+    else:
+        luis.luis_read(input)
+        if "天氣" in luis.user_intent:
+            reply_text=WeatherGet(luis.user_entities[1])
 
     message = TextSendMessage(text=reply_text)
     line_bot_api.reply_message(event.reply_token, message)
