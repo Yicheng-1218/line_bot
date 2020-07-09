@@ -16,7 +16,8 @@ params ={
     'spellCheck': 'false',
     'staging': 'true',
 }
-def getset(user_input):
+def get_report(user_input):
+    global user_mind
     try:
         query = user_input
         params['q']=query
