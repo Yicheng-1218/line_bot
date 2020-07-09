@@ -1,3 +1,5 @@
 line-bot-sdk
 pylint
 Flask
+requests
+beautfulsoup
