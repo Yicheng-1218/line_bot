@@ -30,12 +30,12 @@ def get_report(user_input):
     except Exception as e:
         print(e)
     if ret['topScoringIntent']['intent']=='詢問天氣':
-        user_mind='weather'
+        user_mind='詢問天氣'
         for en in ret['entities']:
             if en['type']=='地點':
                 city=en["entity"]
                 return city
 
     if ret['topScoringIntent']['intent']=='被罵':
-        user_mind='criticize'
+        user_mind='被罵'
         
