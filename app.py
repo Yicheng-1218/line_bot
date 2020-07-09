@@ -34,7 +34,7 @@ def callback():
         abort(400)
     return 'OK'
 
-what_can_i_do="我目前只有3個按鈕\n而且我可以學你說話\n你也可以試試問我問題"
+what_can_i_do="我目前只有3個按鈕\n而且我可以學你說話\n你也可以試試問我問題\n找梗圖輸入@meme"
 
 
 
@@ -44,8 +44,8 @@ def handle_message(event):
     input=event.message.text
 
     if input=="@自我介紹":
-        reply_text = "哈摟我叫yichengBOT\n建於2020/7/7\n沒啥功能"
-    elif input=="@你會幹嘛?":
+        reply_text = "哈摟我叫yichengBOT\n建於2020/7/7\n沒啥功能\n可以一直刷梗圖給你"
+    elif input=="@你會幹嘛":
         reply_text = what_can_i_do
     elif input=="@meme":
         meme_jpg=MemeSend()
