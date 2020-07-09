@@ -8,12 +8,12 @@ from linebot.models import *
 
 from weather import WeatherGet
 
-from flask import current_app as app
+from flask import current_app 
 
 import requests
 
 
-#app = Flask(__name__)
+app = current_app.Flask(__name__)
 # Channel Access Token
 line_bot_api = LineBotApi('SJSoAEGKK4nj58UHAluyb6y18wAdeOUn/F163A1BEHGjI7BLUaFz/2rnRhskf2k9w/7XzOpwsCnZTcztjxjOEv/c2J0GuUd0RPcyQIfNLMzPt6WWxJ5XnMoYp4uBCsNJ7iG95AIAursQ/5xbpyq7aQdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
