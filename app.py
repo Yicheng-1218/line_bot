@@ -10,7 +10,7 @@ from weather import WeatherGet
 
 from flask import current_app as app1
 
-import Getmeme 
+from Getmeme import MemeSend
 
 app = Flask(__name__)
 # Channel Access Token
@@ -25,7 +25,7 @@ def callback():
     signature = request.headers['X-Line-Signature']
     # get request body as text
     body = request.get_data(as_text=True)
-    app1.logger.info("Request body: " + body)
+    app.logger.info("Request body: " + body)
     # handle webhook body
     try:
         handler.handle(body, signature)
@@ -47,7 +47,7 @@ def handle_message(event):
     elif input=="@你會幹嘛?":
         reply_text = what_can_i_do
     elif input=="@meme":
-        reply_picture = ImageSendMessage(original_content_url=Getmeme.MemeSend(),preview_image_url=Getmeme.MemeSend())
+        reply_picture = ImageSendMessage(original_content_url=MemeSend(),preview_image_url=MemeSend())
         line_bot_api.reply_message(event.reply_token, reply_picture)
     elif input=="@新北市天氣":
         reply_text=WeatherGet('新北市')
