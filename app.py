@@ -54,9 +54,9 @@ def handle_message(event):
         reply_picture = ImageSendMessage(original_content_url=meme_jpg,preview_image_url=meme_jpg)
         line_bot_api.reply_message(event.reply_token, reply_picture)
     else:
-        luis.luis_read(input)
-        if "詢問天氣" in luis.user_intent:
-            reply_text=WeatherGet(luis.user_entities[1])
+        luis.getset(input)
+        if luis.user_mind=='weather':
+            reply_text=WeatherGet(luis.getset(input))
 
     message = TextSendMessage(text=reply_text)
     line_bot_api.reply_message(event.reply_token, message)
