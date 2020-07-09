@@ -1,17 +1,19 @@
 from flask import Flask, request, abort
 
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
+from linebot import LineBotApi, WebhookHandler
+
+from linebot.exceptions import InvalidSignatureError
+
 from linebot.models import *
 
-import weather
+from weather import WeatherGet
 
-app = Flask(__name__)
+from flask import current_app as app
 
+import requests
+
+
+#app = Flask(__name__)
 # Channel Access Token
 line_bot_api = LineBotApi('SJSoAEGKK4nj58UHAluyb6y18wAdeOUn/F163A1BEHGjI7BLUaFz/2rnRhskf2k9w/7XzOpwsCnZTcztjxjOEv/c2J0GuUd0RPcyQIfNLMzPt6WWxJ5XnMoYp4uBCsNJ7iG95AIAursQ/5xbpyq7aQdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
@@ -51,7 +53,7 @@ def handle_message(event):
             preview_image_url='https://images4.alphacoders.com/774/77454.jpg')
         line_bot_api.reply_message(event.reply_token, reply_picture)
     elif input=="@新北市天氣":
-        reply_text=weather.WeatherGet('新北市')
+        reply_text=WeatherGet('新北市')
     else:
         reply_text = input
 
