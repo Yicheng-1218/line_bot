@@ -55,7 +55,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, reply_picture)
     else:
         luis.luis_read(input)
-        if "天氣" in luis.user_intent:
+        if "詢問天氣" in luis.user_intent:
             reply_text=WeatherGet(luis.user_entities[1])
 
     message = TextSendMessage(text=reply_text)
