@@ -53,8 +53,6 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, reply_picture)
     elif input=="@新北市天氣":
         reply_text=WeatherGet('新北市')
-    else:
-        reply_text = input
 
     message = TextSendMessage(text=reply_text)
     line_bot_api.reply_message(event.reply_token, message)

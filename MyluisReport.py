@@ -7,9 +7,7 @@ api_link='https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/%
 
 def luisMain(user_input):
     res=requests.get(api_link+user_input)
-    #print(res.text)
-    soup=BeautifulSoup(res.text,'html.parser')
-    topintent=soup.find("body",string="topIntent")
-    print(topintent)
+    ret=res.json()
+    print(ret['topIntent'])
 
 luisMain('明天台北天氣')
