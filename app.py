@@ -10,8 +10,7 @@ from weather import WeatherGet
 
 from flask import current_app as app1
 
-import requests
-
+from Getmeme import MemeSend
 
 app = Flask(__name__)
 # Channel Access Token
@@ -49,8 +48,8 @@ def handle_message(event):
         reply_text = what_can_i_do
     elif input=="@meme":
         reply_picture = ImageSendMessage(
-            original_content_url='https://images4.alphacoders.com/774/77454.jpg',
-            preview_image_url='https://images4.alphacoders.com/774/77454.jpg')
+            original_content_url=MemeSend(),
+            preview_image_url=MemeSend())
         line_bot_api.reply_message(event.reply_token, reply_picture)
     elif input=="@新北市天氣":
         reply_text=WeatherGet('新北市')
