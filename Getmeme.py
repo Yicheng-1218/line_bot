@@ -5,7 +5,7 @@ src=[]
 index=0
 def memesPage():
     if not src:
-        index+=1
+        index=index+1
         Meme_New_List(index)
     if index==36:
         index=0
