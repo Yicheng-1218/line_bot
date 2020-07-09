@@ -54,9 +54,9 @@ def handle_message(event):
         reply_picture = ImageSendMessage(original_content_url=meme_jpg,preview_image_url=meme_jpg)
         line_bot_api.reply_message(event.reply_token, reply_picture)
     else:
-        luis.get_report(input)
+        luis_report=luis.get_report(input)
         if luis.user_mind=="weather":
-            reply_text=WeatherGet(luis.get_report(input))
+            reply_text=WeatherGet(luis_report)
 
     message = TextSendMessage(text=reply_text)
     line_bot_api.reply_message(event.reply_token, message)
