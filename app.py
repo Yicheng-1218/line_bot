@@ -10,7 +10,7 @@ from weather import WeatherGet
 
 from flask import current_app as app1
 
-from Getmeme import MemeSend
+#from Getmeme import MemeSend
 
 app = Flask(__name__)
 # Channel Access Token
