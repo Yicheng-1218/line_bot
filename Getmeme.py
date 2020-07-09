@@ -5,10 +5,10 @@ src=[]
 index=0
 def memesPage():
     if not src:
-        index=index+1
+        index+=1
         Meme_New_List(index)
-        if index==36:
-            index=0
+    if index==36:
+        index=0
 
 def Meme_New_List(page):
     meme_html=requests.get('https://memes.tw/wtf?sort=top-month&contest=11&page=%s'%(page))
