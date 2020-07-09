@@ -10,7 +10,6 @@ from web_spider import WeatherGet,MemeSend
 
 from flask import current_app as app1
 
-#from Getmeme import MemeSend
 
 app = Flask(__name__)
 # Channel Access Token
@@ -46,9 +45,9 @@ def handle_message(event):
         reply_text = "哈摟我叫yichengBOT\n建於2020/7/7\n沒啥功能"
     elif input=="@你會幹嘛?":
         reply_text = what_can_i_do
-    #elif input=="@meme":
-        #reply_picture = ImageSendMessage(original_content_url=MemeSend(),preview_image_url=MemeSend())
-        #line_bot_api.reply_message(event.reply_token, reply_picture)
+    elif input=="@meme":
+        reply_picture = ImageSendMessage(original_content_url=MemeSend(),preview_image_url=MemeSend())
+        line_bot_api.reply_message(event.reply_token, reply_picture)
     elif input=="@新北市天氣":
         reply_text=WeatherGet('新北市')
     else:
