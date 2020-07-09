@@ -36,6 +36,6 @@ def WeatherGet(user_location):
             data=timeblock[2][0].text
             show= show + tlist[i] + ':' + data + '\n'    
     else:
-        show='無此縣市資料'
+        show='無此縣市資料，注意xx縣xx市\n氣象局使用[臺]不是[台]'
 
     return show
