@@ -36,7 +36,7 @@ def callback():
         abort(400)
     return 'OK'
 
-what_can_i_do="我目前只有3個按鈕\n你可以問我天氣或是匯率\n找梗圖輸入@meme"
+what_can_i_do="我目前只有3個按鈕\n你可以問我天氣或是匯率\n找梗圖輸入@meme\n詢問xx縣or市天氣"
 
 
 
