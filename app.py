@@ -15,6 +15,9 @@ from flask import current_app as app1
 import twd
 
 import luis
+
+import random
+
 app = Flask(__name__)
 # Channel Access Token
 line_bot_api = LineBotApi('SJSoAEGKK4nj58UHAluyb6y18wAdeOUn/F163A1BEHGjI7BLUaFz/2rnRhskf2k9w/7XzOpwsCnZTcztjxjOEv/c2J0GuUd0RPcyQIfNLMzPt6WWxJ5XnMoYp4uBCsNJ7iG95AIAursQ/5xbpyq7aQdB04t89/1O/w1cDnyilFU=')
@@ -37,7 +40,8 @@ def callback():
     return 'OK'
 
 what_can_i_do="我目前只有3個按鈕\n你可以問我天氣或是匯率\n找梗圖輸入@meme\n詢問xx縣or市天氣"
-
+criticize=['你以為我不再嗎= =?','欸欸欸~注意言詞','我就笨.jpg','夠瞜夠瞜~','你最聰明拉','你才笨拉']
+hello=['hi','hello','墨鏡貓跟你說你好','你好阿','meow~']
 
 
 # 處理訊息
@@ -53,10 +57,15 @@ def handle_message(event):
         meme_jpg=MemeSend()
         reply_picture = ImageSendMessage(original_content_url=meme_jpg,preview_image_url=meme_jpg)
         line_bot_api.reply_message(event.reply_token, reply_picture)
+    elif input=='hi'or'hello'or'你好':
+        reply_text=random.choice(hello)
     else:
         luis_report=luis.get_report(input)
         if luis.user_mind=="weather":
             reply_text=WeatherGet(luis_report)
+        elif luis.user_mind=="criticize":
+            reply_text=random.choice(criticize)
+            
 
     message = TextSendMessage(text=reply_text)
     line_bot_api.reply_message(event.reply_token, message)
