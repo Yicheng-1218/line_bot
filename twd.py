@@ -23,9 +23,10 @@ def get_exchange_rate(city):
                 "人民幣":"CNY","中國":"CNY","肺炎":"CNY"}    
     keys=currencies.keys()
     tlist=['現金買入','現金賣出','即期買入','即期賣出']
-    currency=city
+    currency=city[0]
     if not city[2]:
-        return countingRate(currencies[currency])
+        if currency in currencies:
+            return countingRate(currencies[currency])
     show=currency+"匯率:\n"
     if currency in keys:
         for i in range(4):
