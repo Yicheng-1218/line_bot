@@ -68,7 +68,7 @@ def handle_message(event):
         if luis.user_mind=="被罵":
             reply_text=choice(angry)
         if luis.user_mind=="查詢匯率":
-            reply_text=get_exchange_rate(input)
+            reply_text=get_exchange_rate(luis_report)
 
     luis.user_mind=''
     message = TextSendMessage(text=reply_text)
