@@ -44,11 +44,9 @@ def get_exchange_rate(city):
 def countingRate(citys_info,number):  #幣值換算
     result=''
     if citys_info[0]=="twd":
-        result=float(number)/float(twder.now(citys_info[1])[2])
+        result=float(number)/float(twder.now(citys_info[1])[1])
         return '%.2f'%result
     else:
-        result=float(number)*float(twder.now(citys_info[0])[3])
+        result=float(number)*float(twder.now(citys_info[0])[2])
         return '%.2f'%result
 
-coin=["台幣","英鎊",600]
-print(get_exchange_rate(coin))
