@@ -56,8 +56,6 @@ def handle_message(event):
     elif input=="@你會幹嘛":
         reply_text = what_can_i_do
     elif input=="@meme":
-        message = TextSendMessage(text="修但幾類~")
-        line_bot_api.reply_message(event.reply_token, message)
         meme_jpg=MemeSend()
         reply_picture = ImageSendMessage(original_content_url=meme_jpg,preview_image_url=meme_jpg)
         line_bot_api.reply_message(event.reply_token, reply_picture)

@@ -47,4 +47,3 @@ def report_parser(ret):
                 coin.append(en["entity"])
         return coin
 
-print(get_report("美國匯率"))
