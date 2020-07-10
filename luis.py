@@ -39,10 +39,10 @@ def report_parser(ret):
 
     if ret['topScoringIntent']['intent']=='查詢匯率':
         user_mind='查詢匯率'
-        city=[]
+        coin=[]
         for en in ret['entities']:
             if en['type']=='幣種':
-                city.append(en["entity"])
+                coin.append(en["entity"])
             elif en['type']=='數量':
-                city.append(en["entity"])
-        return city
+                coin.append(en["entity"])
+        return coin

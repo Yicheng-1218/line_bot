@@ -30,9 +30,9 @@ def get_exchange_rate(city):
         for i in range(4):
             exchange=float(twder.now(currencies[currency])[i+1])
             show=show+tlist[i]+":"+str(exchange)+"\n"
-        print(show)
+        return show
     else:
-        print("無此貨幣資料")
+        return "無此貨幣資料"
 
 def countingRate(citys_info):
     number=citys_info[2]
