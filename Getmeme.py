@@ -1,15 +1,15 @@
 from bs4 import BeautifulSoup
 import requests
-import random
+from random import randint
 src=[]
-index=0
+index=randint(1,93)
 def memesPage():
     global index
     if not src:
         index+=1
         Meme_New_List(index)
-    if index==93:
-        index=0
+    if index>93:
+        index=1
 
 def Meme_New_List(page):
     meme_html=requests.get('https://memes.tw/wtf?sort=top-year&contest=11&page=%s'%(page))

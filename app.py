@@ -12,11 +12,13 @@ from Getmeme import MemeSend
 
 from flask import current_app as app1
 
-import twd
+from twd import get_exchange_rate
+
+from random import choice
 
 import luis
 
-import random
+
 
 app = Flask(__name__)
 # Channel Access Token
@@ -40,8 +42,8 @@ def callback():
     return 'OK'
 
 what_can_i_do="我目前只有3個按鈕\n你可以問我天氣或是匯率\n找梗圖輸入@meme\n詢問xx縣or市天氣"
-angry=['你以為我不再嗎= =?','欸欸欸~注意言詞','我就笨.jpg','夠瞜夠瞜~','你最聰明拉','你才笨拉']
-hello=['hi','hello','墨鏡貓跟你說你好','你好阿','meow~']
+angry=['你以為我不再嗎= =?','欸欸欸~注意言詞','我就笨.jpg','夠瞜夠瞜~','你最聰明拉','zzzzzz']
+hello=['hi','hello','墨鏡貓跟你說你好','你好阿','meow~',"你好",'安安']
 
 
 # 處理訊息
@@ -57,14 +59,16 @@ def handle_message(event):
         meme_jpg=MemeSend()
         reply_picture = ImageSendMessage(original_content_url=meme_jpg,preview_image_url=meme_jpg)
         line_bot_api.reply_message(event.reply_token, reply_picture)
-    elif input=='hi' or input=='hello' or input=='你好':
-        reply_text=random.choice(hello)
+    elif input in hello:
+        reply_text=choice(hello)
     else:
         luis_report=luis.get_report(input)
         if luis.user_mind=="詢問天氣":
             reply_text=WeatherGet(luis_report)
         if luis.user_mind=="被罵":
-            reply_text=random.choice(angry)
+            reply_text=choice(angry)
+        if luis.user_mind=="查詢匯率":
+            reply_text=get_exchange_rate(input)
 
     luis.user_mind=''
     message = TextSendMessage(text=reply_text)
