@@ -20,6 +20,7 @@ currencies={"美元":"USD","美金":"USD","美國":"USD",
                 "馬來幣":"MYR","馬來西亞":"MYR",
                 "人民幣":"CNY","中國":"CNY","肺炎":"CNY"}
 def get_exchange_rate(city):
+    global currencies
     if not city[2]:
         return countingRate(city)    
     keys=currencies.keys()
@@ -35,6 +36,7 @@ def get_exchange_rate(city):
         return "無此貨幣資料"
 
 def countingRate(citys_info):
+    global currencies
     number=citys_info[2]
     if citys_info in currencies:
         if citys_info[0]=="台幣":
