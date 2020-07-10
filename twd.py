@@ -29,26 +29,26 @@ def get_exchange_rate(city):
         currency=city[1]
     show=currency+"匯率:\n"
     if currency in keys:
-        if len(city)==3:
+        if len(city)==3: #如果資料中含有數字就轉跳到幣值換算
             citys_coin=[]
             for i in range(2):
                 citys_coin.append(currencies[city[i]])
             return countingRate(citys_coin,city[2])
-        for i in range(4):
+        for i in range(4): 
             exchange=float(twder.now(currencies[currency])[i+1])
             show=show+tlist[i]+":"+str(exchange)+"\n"
         return show
     else:
         return "無此貨幣資料"
 
-def countingRate(citys_info,number):
+def countingRate(citys_info,number):  #幣值換算
     result=''
     if citys_info[0]=="twd":
-        result=number/float(twder.now(citys_info[1])[2])
+        result=float(number)/float(twder.now(citys_info[1])[2])
         return '%.2f'%result
     else:
-        result=number*float(twder.now(citys_info[0])[3])
+        result=float(number)*float(twder.now(citys_info[0])[3])
         return '%.2f'%result
 
-coin=["台幣","美金",3000]
+coin=["台幣","英鎊",600]
 print(get_exchange_rate(coin))

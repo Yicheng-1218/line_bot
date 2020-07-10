@@ -47,4 +47,4 @@ def report_parser(ret):
                 coin.append(en["entity"])
         return coin
 
-print(get_report("500美金等於多少台幣"))
+print(get_report("5000美金等於多少台幣"))
