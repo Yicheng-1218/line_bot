@@ -2,8 +2,6 @@ import twder
 
 
 def get_exchange_rate(city):
-    if city[0]=="台幣":
-        return "你要換算啥...?"
     currencies={"美元":"USD","美金":"USD","美國":"USD",
                 "港幣":"HKD","香港":"HKD",
                 "英鎊":"GBP","英國":"GBP",
@@ -27,6 +25,8 @@ def get_exchange_rate(city):
     keys=currencies.keys()
     tlist=['現金買入','現金賣出','即期買入','即期賣出']
     currency=city[0]
+    if currency=='台幣':
+        currency=city[1]
     show=currency+"匯率:\n"
     if currency in keys:
         if len(city)==3:
@@ -50,3 +50,5 @@ def countingRate(citys_info,number):
         result=number*float(twder.now(citys_info[0])[3])
         return '%.2f'%result
 
+coin=["台幣","美金",3000]
+print(get_exchange_rate(coin))
