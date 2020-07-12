@@ -71,10 +71,14 @@ def handle_message(event):
     else:
         luis_report=luis.get_report(input)
         if luis.user_mind=="詢問天氣":
+            message = TextSendMessage(text="資料搜尋中~請稍後")
+            line_bot_api.push_message(event.push_token, message)
             reply_text=WeatherGet(luis_report)
         if luis.user_mind=="被罵":
             reply_text=choice(angry)
         if luis.user_mind=="查詢匯率":
+            message = TextSendMessage(text="資料搜尋中~請稍後")
+            line_bot_api.push_message(event.push_token, message)
             reply_text=get_exchange_rate(luis_report)
 
     luis.user_mind=''
