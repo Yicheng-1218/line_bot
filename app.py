@@ -41,7 +41,14 @@ def callback():
         abort(400)
     return 'OK'
 
-what_can_i_do="我目前只有3個按鈕\n你可以問我天氣或是匯率\n找梗圖輸入@meme\n詢問xx縣or市天氣"
+what_can_i_do=("我目前只有3個按鈕\n"
+                "找廢圖點擊或輸入@meme\n"
+                "你可以問我天氣或是匯率\n"
+                "詢問xx縣orxx市天氣\n"
+                "詢問匯率ex:美國匯率\n"
+                "或是多少外幣可以換多少台幣\n"
+                "請求資料複雜所以需要稍等一下")
+
 angry=['你以為我不再嗎= =?','欸欸欸~注意言詞','我就笨.jpg','夠瞜夠瞜~','你最聰明拉','zzzzzz']
 hello=['hi','hello','墨鏡貓跟你說你好','你好阿','meow~',"你好",'安安']
 
@@ -52,7 +59,7 @@ def handle_message(event):
     input=event.message.text
 
     if input=="@自我介紹":
-        reply_text = "哈摟我叫yichengBOT\n建於2020/7/7\n沒啥功能\n可以一直刷梗圖給你"
+        reply_text = "哈摟我叫yichengBOT\n建於2020/7/7\n問我:@你會幹嘛"
     elif input=="@你會幹嘛":
         reply_text = what_can_i_do
     elif input=="@meme":
