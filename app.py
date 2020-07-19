@@ -16,6 +16,8 @@ from twd import get_exchange_rate
 
 from random import choice
 
+from music import music_Leaderboard
+
 import luis
 
 
@@ -76,6 +78,8 @@ def handle_message(event):
             reply_text=choice(angry)
         if luis.user_mind=="查詢匯率":
             reply_text=get_exchange_rate(luis_report)
+        if luis.user_mind=="音樂排行榜":
+            reply_text=music_Leaderboard(luis_report)
     luis.user_mind=''  
     message = TextSendMessage(text=reply_text)
     line_bot_api.reply_message(event.reply_token, message)

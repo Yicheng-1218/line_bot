@@ -47,4 +47,11 @@ def report_parser(ret):
                 coin.append(en["entity"])
         return coin
 
-print(get_report("5000美金等於多少台幣"))
+    if ret['topScoringIntent']['intent']=='音樂排行榜':
+        user_mind='音樂排行榜'
+        for en in ret['entities']:
+            if en['type']=="語言":
+                lang=en['entity']
+        return lang
+
+print(get_report("日韓音樂排行榜"))
