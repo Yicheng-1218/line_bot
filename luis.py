@@ -57,3 +57,4 @@ def report_parser(ret):
             if en['type'] == "語言":
                 lang = en['entity']
         return lang
+#
